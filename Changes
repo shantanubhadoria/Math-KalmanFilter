@@ -1,0 +1,15 @@
+Changelog for Math-KalmanFilter
+
+release-0.02 2013-09-16T08:48:22
+ - Merge branch 'master' of
+   github.com:shantanubhadoria/Math-IMU-LinearQuadraticEstimation [Shantanu
+   Bhadoria]
+
+release-0.01 2013-09-15T16:19:48
+ - Merge branch 'master' of
+   github.com:shantanubhadoria/Math-IMU-LinearQuadraticEstimation [Shantanu
+   Bhadoria]
+ - First push, Sensor Fusion of gyroscope and accelerometer [Shantanu
+   Bhadoria]
+ - Create README.md [Shantanu Bhadoria]
+
