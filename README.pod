@@ -22,7 +22,7 @@ version 0.02
      # $state e.g. rate of change of angle between orientation vector and X axis in degree per second.
      my $delta = readDeltaSensor(); 
  
-     #Created a kalmanfilter object to hold state changes for your measurement target.
+     #Created a Kalman filter object to hold state changes for your measurement target.
      $kalman = Math::KalmanFilter->new(
          angle => $state
      );
@@ -47,7 +47,7 @@ produces estimates of unknown variables that tend to be more precise than those 
 measurement alone.
 
 Algorithm is recursive, which means it takes the output of its previous calculations as a factor in 
-calculating the next step which improves its accuracy over time. The key to kalman filters are two sensors
+calculating the next step which improves its accuracy over time. The key to Kalman filters are two sensors
 with different kind of accuracy issues in each. Sensor A or the state sensor might give in-accurate value
 for a measurement on the whole but it doesn't drift. Sensor B or delta sensor gives gives much more accurate 
 rate of change in value(or delta) but it drifts over time due to its small inaccuracies as it only measures
@@ -67,13 +67,13 @@ estimation of the angular velocity, if we just use it to calculate the current i
 starting inclination and the angular velocity since then there will be a lot of drift as gyroscope error will 
 accumulate over time as we calculate newer angles based previous angle and angular velocity.
 
-A real life example of how kalman filter works is while driving on a highway in a car. If you use the time 
+A real life example of how Kalman filter works is while driving on a highway in a car. If you use the time 
 passed since when your started driving and your estimated average speed every hour and use it to calculate 
-the distance you have travelled your calculation will become more inaccurate as you drive longer and longer. 
+the distance you have traveled your calculation will become more inaccurate as you drive longer and longer. 
 This is drift in value. However if you watch each milestone and calculate your current position using milestone
 data and your speed since the last milestone your result will be much more accurate. That is approximately close
 
-  to how kalman filter works.
+  to how Kalman filter works.
 
 =head1 ATTRIBUTES
 
