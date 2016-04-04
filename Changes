@@ -1,6 +1,7 @@
 Changelog for Math-KalmanFilter
 
-0.06 2016-04-04T03:43:08
+0.06 2016-04-04T03:48:47
+ - updating README for badges (Shantanu Bhadoria)
  - removed blead and 5.8 tests (Shantanu Bhadoria)
  - travis ci link (Shantanu Bhadoria)
  - Added travic ci link (Shantanu Bhadoria)
