@@ -4,7 +4,7 @@ Math::KalmanFilter - Kalman Filter(also known as Linear Quadratic Estimation) im
 
 # VERSION
 
-version 0.05
+version 0.06
 
 # SYNOPSIS
 
