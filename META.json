@@ -73,7 +73,7 @@
    "provides" : {
       "Math::KalmanFilter" : {
          "file" : "lib/Math/KalmanFilter.pm",
-         "version" : "0.05"
+         "version" : "0.06"
       }
    },
    "release_status" : "stable",
@@ -88,7 +88,7 @@
          "web" : "https://github.com/shantanubhadoria/perl-math-kalmanfilter"
       }
    },
-   "version" : "0.05",
+   "version" : "0.06",
    "x_contributors" : [
       "Shantanu Bhadoria <shantanu.bhadoria@gmail.com>",
       "Shantanu Bhadoria <shantanu@cpan.org>"

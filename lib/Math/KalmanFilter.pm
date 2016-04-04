@@ -13,7 +13,7 @@ package Math::KalmanFilter;
 # This is free software; you can redistribute it and/or modify it under
 # the same terms as the Perl 5 programming language system itself.
 #
-our $VERSION = '0.05'; # VERSION
+our $VERSION = '0.06'; # VERSION
 
 # Dependencies
 use 5.010;
@@ -109,7 +109,7 @@ Math::KalmanFilter - Kalman Filter(also known as Linear Quadratic Estimation) im
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
@@ -214,6 +214,8 @@ Calculated angle
 =head2 getAngle
 
 Calculate new state based on observed reading from state sensor, delta sensor and time elapsed since last reading.
+
+=for HTML <a href="https://travis-ci.org/shantanubhadoria/perl-Math-KalmanFilter"><img src="https://travis-ci.org/shantanubhadoria/perl-Math-KalmanFilter.svg?branch=master"></a>
 
 =for :stopwords cpan testmatrix url annocpan anno bugtracker rt cpants kwalitee diff irc mailto metadata placeholders metacpan
 
