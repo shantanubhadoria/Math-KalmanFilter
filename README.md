@@ -39,6 +39,8 @@ version 0.06
 
 # DESCRIPTION
 
+[\[File:https://travis-ci.org/shantanubhadoria/perl-Math-KalmanFilter.svg?branch=build/master](https://metacpan.org/pod/|https:#travis-ci.org-shantanubhadoria-perl-Math-KalmanFilter)
+
 The Kalman filter, also known as linear quadratic estimation (LQE), is an algorithm that uses a series 
 of measurements observed over time, containing noise (random variations) and other inaccuracies, and 
 produces estimates of unknown variables that tend to be more precise than those based on a single 
