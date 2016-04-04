@@ -124,8 +124,6 @@ METHODS
     Calculate new state based on observed reading from state sensor, delta
     sensor and time elapsed since last reading.
 
- BADGES
-
 SUPPORT
 
  Bugs / Feature Requests
