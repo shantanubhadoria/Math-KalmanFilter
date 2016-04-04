@@ -1,6 +1,6 @@
 Changelog for Math-KalmanFilter
 
-0.06 2016-04-04T08:57:13
+0.06 2016-04-04T08:57:25
  - attempting to insert badges (Shantanu Bhadoria)
  - updating README for badges (Shantanu Bhadoria)
  - removed blead and 5.8 tests (Shantanu Bhadoria)
