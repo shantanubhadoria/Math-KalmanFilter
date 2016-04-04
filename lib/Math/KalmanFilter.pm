@@ -144,8 +144,6 @@ version 0.06
 
 =head1 DESCRIPTION
 
-L<[File:https:E<sol>E<sol>travis-ci.orgE<sol>shantanubhadoriaE<sol>perl-Math-KalmanFilter.svg?branch=buildE<sol>master | https://travis-ci.org/shantanubhadoria/perl-Math-KalmanFilter]>
-
 The Kalman filter, also known as linear quadratic estimation (LQE), is an algorithm that uses a series 
 of measurements observed over time, containing noise (random variations) and other inaccuracies, and 
 produces estimates of unknown variables that tend to be more precise than those based on a single 
@@ -216,6 +214,10 @@ Calculated angle
 =head2 getAngle
 
 Calculate new state based on observed reading from state sensor, delta sensor and time elapsed since last reading.
+
+=head2 BADGES
+
+=for HTML <a href="https://travis-ci.org/shantanubhadoria/perl-Math-KalmanFilter"><img src="https://travis-ci.org/shantanubhadoria/perl-Math-KalmanFilter.svg?branch=master"></a>
 
 =for :stopwords cpan testmatrix url annocpan anno bugtracker rt cpants kwalitee diff irc mailto metadata placeholders metacpan
 
