@@ -18,6 +18,9 @@ getAngle
 qAngle
 qBias
 rMeasure
+Accelerometer
+Accelerometers
+covariance
 Shantanu
 Bhadoria
 at
