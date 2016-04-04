@@ -229,6 +229,10 @@ Calculated angle
 
 Calculate new state based on observed reading from state sensor, delta sensor and time elapsed since last reading.
 
+=head2 BADGES
+
+=for HTML <a href="https://travis-ci.org/shantanubhadoria/perl-Math-KalmanFilter"><img src="https://travis-ci.org/shantanubhadoria/perl-Math-KalmanFilter.svg?branch=master"></a>
+
 =for :stopwords cpan testmatrix url annocpan anno bugtracker rt cpants kwalitee diff irc mailto metadata placeholders metacpan
 
 =head1 SUPPORT
