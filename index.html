@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Perl-math-kalmanfilter by shantanubhadoria</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Perl-math-kalmanfilter</h1>
+      <h2 class="project-tagline">Linear Quadratic Estimation or Kalman Filter for Inertial Measurement Units</h2>
+      <a href="https://github.com/shantanubhadoria/perl-Math-KalmanFilter" class="btn">View on GitHub</a>
+      <a href="https://github.com/shantanubhadoria/perl-Math-KalmanFilter/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/shantanubhadoria/perl-Math-KalmanFilter/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="name" class="anchor" href="#name" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>NAME</h1>
+
+<p>Math::KalmanFilter - Kalman Filter(also known as Linear Quadratic Estimation) implementation for sensor fusion and such</p>
+
+<div>
+    <p>
+    <img src="https://img.shields.io/badge/perl-5.10+-brightgreen.svg" alt="Requires Perl 5.10+">
+    <a href="https://travis-ci.org/shantanubhadoria/perl-Math-KalmanFilter"><img src="https://api.travis-ci.org/shantanubhadoria/perl-Math-KalmanFilter.svg?branch=build/master" alt="Travis status"></a>
+    <a href="http://matrix.cpantesters.org/?dist=Math-KalmanFilter%200.06"><img src="https://badgedepot.code301.com/badge/cpantesters/Math-KalmanFilter/0.06" alt="CPAN Testers result"></a>
+    <a href="http://cpants.cpanauthors.org/dist/Math-KalmanFilter-0.06"><img src="https://badgedepot.code301.com/badge/kwalitee/Math-KalmanFilter/0.06" alt="Distribution kwalitee"></a>
+    <a href="https://gratipay.com/shantanubhadoria"><img src="https://img.shields.io/gratipay/shantanubhadoria.svg" alt="Gratipay"></a>
+    </p>
+</div>
+
+<h1>
+<a id="version" class="anchor" href="#version" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>VERSION</h1>
+
+<p>version 0.06</p>
+
+<h1>
+<a id="synopsis" class="anchor" href="#synopsis" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SYNOPSIS</h1>
+
+<pre><code>    use Math::KalmanFilter;
+    use Time::HiRes qw(time);
+
+    my $oldTime = time();
+    # Read State from state sensor, in a IMU this would be one of the accelerometer orientation angle 
+    # e.g. Angle between orientation vector and X axis in degrees.
+    my $state = readStateSensor(); 
+
+    # Read rate of change of state, in a IMU gyroscope measures the delta i.e. the Rate of change of
+    # $state e.g. rate of change of angle between orientation vector and X axis in degree per second.
+    my $delta = readDeltaSensor(); 
+
+    #Created a Kalman filter object to hold state changes for your measurement target.
+    $kalman = Math::KalmanFilter-&gt;new(
+        angle =&gt; $state
+    );
+
+    while($keep_running){
+        my $newTime = time();
+        my $deltaTime = $newTime - $oldTime;
+        $oldTime  = $newTime;
+
+        my $state = readStateSensor(); 
+        my $delta = readDeltaSensor(); 
+        my $angle = $kalman-&gt;getAngle($state,$delta,$deltaTime);
+
+        print "CURRENT ANGLE:$angle";
+    }
+</code></pre>
+
+<h1>
+<a id="description" class="anchor" href="#description" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>DESCRIPTION</h1>
+
+<p>The Kalman filter, also known as linear quadratic estimation (LQE), is an algorithm that uses a series 
+of measurements observed over time, containing noise (random variations) and other inaccuracies, and 
+produces estimates of unknown variables that tend to be more precise than those based on a single 
+measurement alone.</p>
+
+<p>Algorithm is recursive, which means it takes the output of its previous calculations as a factor in 
+calculating the next step which improves its accuracy over time. The key to Kalman filters are two sensors
+with different kind of accuracy issues in each. Sensor A or the state sensor might give in-accurate value
+for a measurement on the whole but it doesn't drift. Sensor B or delta sensor gives gives much more accurate 
+rate of change in value(or delta) but it drifts over time due to its small inaccuracies as it only measures
+rate of change in value and not the actual value. Kalman filter uses this knowledge to fuse results from both
+sensors to give a state value which is more accurate than state value received from any of these filters
+alone.</p>
+
+<p>An example of application for this is calculating orientation of objects using Gyroscopes and Accelerometers.</p>
+
+<p>While Accelerometer is usually used to measure gravity it can be used to measure the inclination of a body 
+with respect to the surface of earth along the x and y axis(not z axis as Z axis is usually facing the 
+opposite direction as the force of gravity) by measuring the direction in which the force of gravity is 
+applied.</p>
+
+<p>Gyroscope measures the rate of rotation about one or all the axis of a body. while it gives fairly accurate 
+estimation of the angular velocity, if we use it to calculate the current inclination based on the starting 
+inclination and the angular velocity, there is a lot of drift, which means the gyroscope error will accumulate 
+over time as we calculate newer angles based on previous angle and angular velocity and the error in angular 
+velocity piles on.</p>
+
+<p>A real life example of how Kalman filter works is while driving on a highway in a car. If you take the time 
+passed since when your started driving and your estimated average speed every hour and use it to calculate 
+the distance you have traveled your calculation will become more inaccurate as you drive on.</p>
+
+<p>This is drift in value. However if you watch each milestone and calculate your current position using milestone
+data and your speed since the last milestone your result will be much more accurate. That is approximately close</p>
+
+<pre><code>to how Kalman filter works.
+</code></pre>
+
+<h1>
+<a id="attributes" class="anchor" href="#attributes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ATTRIBUTES</h1>
+
+<h2>
+<a id="qangle" class="anchor" href="#qangle" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>qAngle</h2>
+
+<pre><code>* default: 0.001 
+</code></pre>
+
+<h2>
+<a id="qbias" class="anchor" href="#qbias" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>qBias</h2>
+
+<pre><code>* default: 0.003
+</code></pre>
+
+<h2>
+<a id="rmeasure" class="anchor" href="#rmeasure" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>rMeasure</h2>
+
+<pre><code>* default: 0.03
+</code></pre>
+
+<h2>
+<a id="bias" class="anchor" href="#bias" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>bias</h2>
+
+<pre><code>* starting value(default): 0
+* recalculated(optimised) at each new sensor reading.
+</code></pre>
+
+<h2>
+<a id="covariance" class="anchor" href="#covariance" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>covariance</h2>
+
+<p>This is the covariance matrix, it is stored as a 2d array ref
+ * starting value(default): [[0,0],[0,0]]
+ * recalculated(optimised) at each new sensor reading.</p>
+
+<h2>
+<a id="angle" class="anchor" href="#angle" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>angle</h2>
+
+<p>Calculated angle</p>
+
+<h1>
+<a id="methods" class="anchor" href="#methods" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>METHODS</h1>
+
+<h2>
+<a id="getangle" class="anchor" href="#getangle" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>getAngle</h2>
+
+<p>Calculate new state based on observed reading from state sensor, delta sensor and time elapsed since last reading.</p>
+
+<h2>
+<a id="badges" class="anchor" href="#badges" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>BADGES</h2>
+
+<h1>
+<a id="support" class="anchor" href="#support" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SUPPORT</h1>
+
+<h2>
+<a id="bugs--feature-requests" class="anchor" href="#bugs--feature-requests" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bugs / Feature Requests</h2>
+
+<p>Please report any bugs or feature requests through github at 
+<a href="https://github.com/shantanubhadoria/perl-math-kalmanfilter/issues">https://github.com/shantanubhadoria/perl-math-kalmanfilter/issues</a>.
+You will be notified automatically of any progress on your issue.</p>
+
+<h2>
+<a id="source-code" class="anchor" href="#source-code" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Source Code</h2>
+
+<p>This is open source software.  The code repository is available for
+public review and contribution under the terms of the license.</p>
+
+<p><a href="https://github.com/shantanubhadoria/perl-math-kalmanfilter">https://github.com/shantanubhadoria/perl-math-kalmanfilter</a></p>
+
+<pre><code>git clone git://github.com/shantanubhadoria/perl-math-kalmanfilter.git
+</code></pre>
+
+<h1>
+<a id="author" class="anchor" href="#author" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>AUTHOR</h1>
+
+<p>Shantanu Bhadoria &lt;shantanu at cpan dott org&gt;</p>
+
+<h1>
+<a id="contributors" class="anchor" href="#contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CONTRIBUTORS</h1>
+
+<ul>
+<li>Shantanu Bhadoria <a href="mailto:shantanu.bhadoria@gmail.com">shantanu.bhadoria@gmail.com</a>
+</li>
+<li>Shantanu Bhadoria <a href="mailto:shantanu@cpan.org">shantanu@cpan.org</a>
+</li>
+</ul>
+
+<h1>
+<a id="copyright-and-license" class="anchor" href="#copyright-and-license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>COPYRIGHT AND LICENSE</h1>
+
+<p>This software is copyright (c) 2016 by Shantanu Bhadoria.</p>
+
+<p>This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/shantanubhadoria/perl-Math-KalmanFilter">Perl-math-kalmanfilter</a> is maintained by <a href="https://github.com/shantanubhadoria">shantanubhadoria</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
