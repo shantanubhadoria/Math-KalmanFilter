@@ -131,16 +131,6 @@ sub getAngle {
 
 __END__
 
-=head2 BADGES
-
-=begin HTML
-
-<a href="https://travis-ci.org/shantanubhadoria/perl-Math-KalmanFilter"><img src="https://travis-ci.org/shantanubhadoria/perl-Math-KalmanFilter.svg?branch=master"></a>
-
-=end HTML
-
-=cut
-
 =begin wikidoc
 
 = SYNOPSIS
