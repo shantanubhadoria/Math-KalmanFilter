@@ -1,6 +1,12 @@
 Changelog for Math-KalmanFilter
 
-0.06 2016-04-04T08:57:25
+0.07 2016-04-07T02:54:43
+ - Remove manual badges section (Shantanu Bhadoria)
+ - Adding latest readme pod (Shantanu Bhadoria)
+ - Bump Changes (Shantanu Bhadoria)
+
+0.06 2016-04-04T08:58:09
+ - v0.06 (Shantanu Bhadoria)
  - attempting to insert badges (Shantanu Bhadoria)
  - updating README for badges (Shantanu Bhadoria)
  - removed blead and 5.8 tests (Shantanu Bhadoria)
