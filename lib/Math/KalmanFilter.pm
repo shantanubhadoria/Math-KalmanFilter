@@ -13,7 +13,7 @@ package Math::KalmanFilter;
 # This is free software; you can redistribute it and/or modify it under
 # the same terms as the Perl 5 programming language system itself.
 #
-our $VERSION = '0.06'; # VERSION
+our $VERSION = '0.07'; # VERSION
 
 # Dependencies
 use 5.010;
@@ -114,8 +114,8 @@ Math::KalmanFilter - Kalman Filter(also known as Linear Quadratic Estimation) im
 <p>
 <img src="https://img.shields.io/badge/perl-5.10+-brightgreen.svg" alt="Requires Perl 5.10+" />
 <a href="https://travis-ci.org/shantanubhadoria/perl-Math-KalmanFilter"><img src="https://api.travis-ci.org/shantanubhadoria/perl-Math-KalmanFilter.svg?branch=build/master" alt="Travis status" /></a>
-<a href="http://matrix.cpantesters.org/?dist=Math-KalmanFilter%200.06"><img src="https://badgedepot.code301.com/badge/cpantesters/Math-KalmanFilter/0.06" alt="CPAN Testers result" /></a>
-<a href="http://cpants.cpanauthors.org/dist/Math-KalmanFilter-0.06"><img src="https://badgedepot.code301.com/badge/kwalitee/Math-KalmanFilter/0.06" alt="Distribution kwalitee" /></a>
+<a href="http://matrix.cpantesters.org/?dist=Math-KalmanFilter%200.07"><img src="https://badgedepot.code301.com/badge/cpantesters/Math-KalmanFilter/0.07" alt="CPAN Testers result" /></a>
+<a href="http://cpants.cpanauthors.org/dist/Math-KalmanFilter-0.07"><img src="https://badgedepot.code301.com/badge/kwalitee/Math-KalmanFilter/0.07" alt="Distribution kwalitee" /></a>
 <a href="https://gratipay.com/shantanubhadoria"><img src="https://img.shields.io/gratipay/shantanubhadoria.svg" alt="Gratipay" /></a>
 </p>
 
@@ -123,7 +123,7 @@ Math::KalmanFilter - Kalman Filter(also known as Linear Quadratic Estimation) im
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 
@@ -228,10 +228,6 @@ Calculated angle
 =head2 getAngle
 
 Calculate new state based on observed reading from state sensor, delta sensor and time elapsed since last reading.
-
-=head2 BADGES
-
-=for HTML <a href="https://travis-ci.org/shantanubhadoria/perl-Math-KalmanFilter"><img src="https://travis-ci.org/shantanubhadoria/perl-Math-KalmanFilter.svg?branch=master"></a>
 
 =for :stopwords cpan testmatrix url annocpan anno bugtracker rt cpants kwalitee diff irc mailto metadata placeholders metacpan
 

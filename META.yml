@@ -33,7 +33,7 @@ no_index:
 provides:
   Math::KalmanFilter:
     file: lib/Math/KalmanFilter.pm
-    version: 0.06
+    version: 0.07
 requires:
   Moose: 0
   perl: 5.010
@@ -43,7 +43,7 @@ resources:
   bugtracker: https://github.com/shantanubhadoria/perl-math-kalmanfilter/issues
   homepage: https://metacpan.org/release/Math-KalmanFilter
   repository: git://github.com/shantanubhadoria/perl-math-kalmanfilter.git
-version: 0.06
+version: 0.07
 x_contributors:
   - 'Shantanu Bhadoria <shantanu.bhadoria@gmail.com>'
   - 'Shantanu Bhadoria <shantanu@cpan.org>'

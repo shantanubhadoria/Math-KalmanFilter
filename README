@@ -5,7 +5,7 @@ NAME
 
 VERSION
 
-    version 0.06
+    version 0.07
 
 SYNOPSIS
 
@@ -123,8 +123,6 @@ METHODS
 
     Calculate new state based on observed reading from state sensor, delta
     sensor and time elapsed since last reading.
-
- BADGES
 
 SUPPORT
 
