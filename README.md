@@ -6,15 +6,15 @@ Math::KalmanFilter - Kalman Filter(also known as Linear Quadratic Estimation) im
     <p>
     <img src="https://img.shields.io/badge/perl-5.10+-brightgreen.svg" alt="Requires Perl 5.10+" />
     <a href="https://travis-ci.org/shantanubhadoria/perl-Math-KalmanFilter"><img src="https://api.travis-ci.org/shantanubhadoria/perl-Math-KalmanFilter.svg?branch=build/master" alt="Travis status" /></a>
-    <a href="http://matrix.cpantesters.org/?dist=Math-KalmanFilter%200.06"><img src="https://badgedepot.code301.com/badge/cpantesters/Math-KalmanFilter/0.06" alt="CPAN Testers result" /></a>
-    <a href="http://cpants.cpanauthors.org/dist/Math-KalmanFilter-0.06"><img src="https://badgedepot.code301.com/badge/kwalitee/Math-KalmanFilter/0.06" alt="Distribution kwalitee" /></a>
+    <a href="http://matrix.cpantesters.org/?dist=Math-KalmanFilter%200.07"><img src="https://badgedepot.code301.com/badge/cpantesters/Math-KalmanFilter/0.07" alt="CPAN Testers result" /></a>
+    <a href="http://cpants.cpanauthors.org/dist/Math-KalmanFilter-0.07"><img src="https://badgedepot.code301.com/badge/kwalitee/Math-KalmanFilter/0.07" alt="Distribution kwalitee" /></a>
     <a href="https://gratipay.com/shantanubhadoria"><img src="https://img.shields.io/gratipay/shantanubhadoria.svg" alt="Gratipay" /></a>
     </p>
 </div>
 
 # VERSION
 
-version 0.06
+version 0.07
 
 # SYNOPSIS
 
@@ -119,8 +119,6 @@ Calculated angle
 ## getAngle
 
 Calculate new state based on observed reading from state sensor, delta sensor and time elapsed since last reading.
-
-## BADGES
 
 # SUPPORT
 
